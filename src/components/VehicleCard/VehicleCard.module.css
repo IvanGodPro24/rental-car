@@ -1,0 +1,46 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-img {
+  min-width: 280px;
+  object-fit: cover;
+  border-radius: 14px;
+
+  margin-bottom: 1rem;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-img:hover {
+  transform: scale(1.05);
+}
+
+.general-container {
+  margin-bottom: 28px;
+}
+
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 8px;
+}
+
+.main-text {
+  font-weight: 500;
+  line-height: 1.25;
+  color: #101828;
+}
+
+.extra-text {
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8d929a;
+}
+
+.span {
+  color: #3470ff;
+}

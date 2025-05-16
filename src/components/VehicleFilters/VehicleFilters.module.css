@@ -1,0 +1,39 @@
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 1rem;
+
+  margin-top: 84px;
+  margin-bottom: 56px;
+}
+
+.internal-filter-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.from-to-container {
+  display: flex;
+}
+
+.label {
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8d929a;
+
+  padding-bottom: 8px;
+}
+
+.custom-select {
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 204px;
+  height: 44px;
+
+  background: #f7f7f7;
+}
+
+.select {
+}

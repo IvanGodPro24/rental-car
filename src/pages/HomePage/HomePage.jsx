@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import Container from "../../components/Container/Container";
 import css from "./HomePage.module.css";
+import Button from "../../components/Button/Button";
 
 const HomePage = () => {
   return (
@@ -10,7 +10,7 @@ const HomePage = () => {
         <p className={css.paragraph}>
           Reliable and budget-friendly rentals for any journey
         </p>
-        <Link to='/catalog' className={css.view}>View Catalog</Link>
+        <Button to="/catalog">View Catalog</Button>
       </Container>
     </section>
   );

@@ -1,0 +1,18 @@
+.list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 3rem 2rem;
+}
+
+.item {
+  max-width: 280px;
+}
+
+@media (min-width: 1280px) {
+  .list {
+    flex-basis: calc((100% - 64px) / 3);
+  }
+}

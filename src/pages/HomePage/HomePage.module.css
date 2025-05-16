@@ -29,26 +29,6 @@
   margin-bottom: 40px;
 }
 
-.view {
-  font-weight: 600;
-  line-height: 1.25;
-  color: #fff;
-
-  display: block;
-  margin: 0 auto;
-  max-width: 276px;
-  border-radius: 12px;
-  padding: 12px 88px;
-
-  background: #3470ff;
-
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.view:hover {
-  background: #0b44cd;
-}
-
 @media (min-width: 353px) {
   .section {
     padding-top: 267px;
