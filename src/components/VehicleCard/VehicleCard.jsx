@@ -1,6 +1,10 @@
 import css from "./VehicleCard.module.css";
 import carLogo from "../../assets/car-logo.jpg";
 import Button from "../Button/Button";
+import icons from "../../assets/icons.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavourites } from "../../redux/vehicles/selectors";
+import { addFavourite, removeFavourite } from "../../redux/vehicles/slice";
 
 const VehicleCard = ({
   id,
@@ -15,8 +19,16 @@ const VehicleCard = ({
   mileage,
 }) => {
   const splitAddress = address.split(", ").slice(1);
-
   const formattedMileage = mileage.toLocaleString("ru-RU");
+
+  const dispatch = useDispatch();
+
+  const favourites = useSelector(selectFavourites);
+
+  const isFavourite = favourites.includes(id);
+
+  const handleToggleFavourite = () =>
+    isFavourite ? dispatch(removeFavourite(id)) : dispatch(addFavourite(id));
 
   return (
     <>
@@ -34,6 +46,17 @@ const VehicleCard = ({
             className={css["card-img"]}
           />
         )}
+
+        <svg
+          className={css.heart}
+          onClick={handleToggleFavourite}
+        >
+          <use
+            href={
+              isFavourite ? `${icons}#icon-heart-active` : `${icons}#icon-heart`
+            }
+          ></use>
+        </svg>
 
         <div className={css["general-container"]}>
           <div className={css["main-container"]}>

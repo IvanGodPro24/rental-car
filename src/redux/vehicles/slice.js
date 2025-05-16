@@ -6,8 +6,21 @@ const vehicleSlice = createSlice({
 
   initialState: {
     items: [],
+    favourites: [],
     loading: false,
     error: null,
+  },
+
+  reducers: {
+    addFavourite(state, action) {
+      if (!state.favourites.includes(action.payload)) {
+        state.favourites.push(action.payload);
+      }
+    },
+
+    removeFavourite(state, action) {
+      state.favourites = state.favourites.filter((id) => id !== action.payload);
+    },
   },
 
   extraReducers: (builder) => {
@@ -26,5 +39,7 @@ const vehicleSlice = createSlice({
       });
   },
 });
+
+export const { addFavourite, removeFavourite } = vehicleSlice.actions;
 
 export default vehicleSlice.reducer;
