@@ -1,4 +1,5 @@
 @import url("./reset.css");
+@import url("./general.css");
 
 :root {
   font-family: "Manrope", sans-serif;
@@ -26,9 +27,4 @@ body {
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
-}
-
-.error {
-  margin-top: 10rem;
-  text-align: center;
 }

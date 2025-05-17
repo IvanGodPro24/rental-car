@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accent {
+  color: #3470ff;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.error {
+  margin-top: 10rem;
+  text-align: center;
+}

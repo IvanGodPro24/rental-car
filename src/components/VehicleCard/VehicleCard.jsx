@@ -5,6 +5,7 @@ import icons from "../../assets/icons.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavourites } from "../../redux/vehicles/selectors";
 import { addFavourite, removeFavourite } from "../../redux/vehicles/slice";
+import { formattedMileage, splitAddress } from "../../utils/utils";
 
 const VehicleCard = ({
   id,
@@ -18,9 +19,6 @@ const VehicleCard = ({
   type,
   mileage,
 }) => {
-  const splitAddress = address.split(", ").slice(1);
-  const formattedMileage = mileage.toLocaleString("ru-RU");
-
   const dispatch = useDispatch();
 
   const favourites = useSelector(selectFavourites);
@@ -47,10 +45,7 @@ const VehicleCard = ({
           />
         )}
 
-        <svg
-          className={css.heart}
-          onClick={handleToggleFavourite}
-        >
+        <svg className={css.heart} onClick={handleToggleFavourite}>
           <use
             href={
               isFavourite ? `${icons}#icon-heart-active` : `${icons}#icon-heart`
@@ -61,17 +56,17 @@ const VehicleCard = ({
         <div className={css["general-container"]}>
           <div className={css["main-container"]}>
             <p className={css["main-text"]}>
-              {brand} <span className={css.span}>{model}</span>, {year}
+              {brand} <span className="accent">{model}</span>, {year}
             </p>
             <p className={css["main-text"]}>${rentalPrice}</p>
           </div>
 
           <div>
             <p className={css["extra-text"]}>
-              {splitAddress.join(" | ")} | {rentalCompany} |
+              {splitAddress(address).join(" | ")} | {rentalCompany} |
             </p>
             <p className={css["extra-text"]}>
-              {type} | {formattedMileage} km
+              {type} | {formattedMileage(mileage)} km
             </p>
           </div>
         </div>

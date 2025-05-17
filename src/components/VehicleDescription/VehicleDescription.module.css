@@ -1,0 +1,14 @@
+.info {
+  padding-top: 20px;
+  margin-bottom: 68px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+.title {
+  margin-bottom: 20px;
+}
