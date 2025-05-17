@@ -1,5 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllVehicles } from "./operations";
+import { getAllVehicles, getVehicleById } from "./operations";
+
+const handlePending = (state) => {
+  state.loading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.loading = false;
+  state.error = action.payload;
+};
 
 const vehicleSlice = createSlice({
   name: "vehicle",
@@ -7,6 +16,7 @@ const vehicleSlice = createSlice({
   initialState: {
     items: [],
     favourites: [],
+    selectedVehicle: null,
     loading: false,
     error: null,
   },
@@ -25,18 +35,20 @@ const vehicleSlice = createSlice({
 
   extraReducers: (builder) => {
     builder
-      .addCase(getAllVehicles.pending, (state) => {
-        state.loading = true;
-      })
       .addCase(getAllVehicles.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(getAllVehicles.rejected, (state, action) => {
+
+      .addCase(getVehicleById.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
-      });
+        state.error = null;
+        state.selectedVehicle = action.payload;
+      })
+
+      .addMatcher((action) => action.type.endsWith("rejected"), handleRejected)
+      .addMatcher((action) => action.type.endsWith("pending"), handlePending);
   },
 });
 

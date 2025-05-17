@@ -1,0 +1,10 @@
+.details-container {
+  margin-top: 84px;
+  margin-bottom: 104px;
+}
+
+.card-form-contaner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

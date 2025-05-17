@@ -3,7 +3,8 @@
   line-height: 1.25;
   color: #fff;
 
-  display: block;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
   max-width: 276px;
   border-radius: 12px;
@@ -13,7 +14,13 @@
 
   transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &.btn:hover {
+  &.btn:hover,
+  &.btn:focus {
     background: #0b44cd;
   }
+}
+
+.send-btn {
+  max-width: 156px;
+  padding: 12px 58px;
 }
