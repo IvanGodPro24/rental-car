@@ -21,6 +21,9 @@ const VehicleCard = ({
 }) => {
   const dispatch = useDispatch();
 
+  const handleClick = () =>
+    sessionStorage.setItem("catalogScrollY", window.scrollY);
+
   const favourites = useSelector(selectFavourites);
 
   const isFavourite = favourites.includes(id);
@@ -72,7 +75,9 @@ const VehicleCard = ({
         </div>
       </div>
 
-      <Button to={`/catalog/${id}`}>Read more</Button>
+      <Button to={`/catalog/${id}`} onClick={handleClick}>
+        Read more
+      </Button>
     </>
   );
 };

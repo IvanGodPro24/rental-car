@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllVehicles, getVehicleById } from "./operations";
+import { getAllBrands, getAllVehicles, getVehicleById } from "./operations";
 
 const handlePending = (state) => {
   state.loading = true;
@@ -20,6 +20,7 @@ const vehicleSlice = createSlice({
     totalPages: null,
     currentPage: 1,
     loadedPages: [],
+    brands: [],
     loading: false,
     error: null,
   },
@@ -53,13 +54,14 @@ const vehicleSlice = createSlice({
         state.error = null;
 
         const page = action.meta.arg.page || 1;
+        const cars = action.payload.cars;
 
         if (!state.loadedPages.includes(page)) {
           state.loadedPages.push(page);
 
           page === 1
-            ? (state.items = action.payload.cars)
-            : (state.items = [...state.items, ...action.payload.cars]);
+            ? (state.items = cars)
+            : (state.items = [...state.items, ...cars]);
         }
 
         state.totalPages = action.payload.totalPages;
@@ -69,6 +71,12 @@ const vehicleSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.selectedVehicle = action.payload;
+      })
+
+      .addCase(getAllBrands.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.brands = action.payload;
       })
 
       .addMatcher((action) => action.type.endsWith("rejected"), handleRejected)

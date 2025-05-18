@@ -16,6 +16,7 @@ import {
 import Loader from "../../components/Loader/Loader";
 import { toast } from "sonner";
 import { setCurrentPage } from "../../redux/vehicles/slice";
+import { selectFilters } from "../../redux/filters/selectors";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -27,12 +28,31 @@ const CatalogPage = () => {
   const totalPages = useSelector(selectTotalPages);
   const currentPage = useSelector(selectCurrentPage);
   const loadedPages = useSelector(selectLoadedPages);
+  const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    if (!loadedPages.includes(currentPage)) {
-      dispatch(getAllVehicles({ page: currentPage }));
+    const savedScrollY = sessionStorage.getItem("catalogScrollY");
+
+    if (savedScrollY) {
+      window.scrollTo(0, parseInt(savedScrollY));
+      sessionStorage.removeItem("catalogScrollY");
     }
-  }, [dispatch, currentPage, loadedPages]);
+
+    const { brand, rentalPrice, minMileage, maxMileage } = filters;
+
+    if (!loadedPages.includes(currentPage)) {
+      dispatch(
+        getAllVehicles({
+          page: currentPage,
+          limit: 12,
+          brand,
+          rentalPrice,
+          minMileage,
+          maxMileage,
+        })
+      );
+    }
+  }, [dispatch, currentPage, filters, loadedPages]);
 
   const loadMoreVehicles = () => {
     if (currentPage < totalPages) {
@@ -40,7 +60,7 @@ const CatalogPage = () => {
       dispatch(setCurrentPage(nextPage));
 
       if (nextPage === totalPages && !toastShownRef.current) {
-        toast.success("It's over!");
+        toast.success("Vehicles are over!");
         toastShownRef.current = true;
       }
     }
@@ -49,11 +69,16 @@ const CatalogPage = () => {
   return (
     <section>
       <Container>
-        {/* <VehicleFilters /> */}
+        <VehicleFilters />
         {isLoading && <Loader />}
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error center">{error}</p>}
+
+        {!isLoading && !error && vehicles.length === 0 && (
+          <p className="center">No vehicles found matching your criteria.</p>
+        )}
+
         <VehicleList vehicles={vehicles} />
-        {currentPage < totalPages && (
+        {currentPage < totalPages && vehicles.length > 0 && (
           <LoadMoreButton onClick={loadMoreVehicles} />
         )}
       </Container>
