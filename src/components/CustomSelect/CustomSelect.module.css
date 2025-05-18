@@ -56,3 +56,9 @@
 .rotate {
   transform: rotate(180deg);
 }
+
+@media (min-width: 769px) and (max-width: 1280px) {
+  .custom-select {
+    min-width: 300px;
+  }
+}
