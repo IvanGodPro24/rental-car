@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getVehicleById } from "../../redux/vehicles/operations";
 import { selectLoading, selectVehicle } from "../../redux/vehicles/selectors";
 import VehicleImage from "../../components/VehicleImage/VehicleImage";
@@ -20,6 +20,9 @@ const VehicleDetailPage = () => {
 
   const isLoading = useSelector(selectLoading);
 
+  const location = useLocation();
+  const backLink = location.state ?? "/catalog";
+
   useEffect(() => {
     dispatch(getVehicleById(id));
   }, [dispatch, id]);
@@ -31,7 +34,7 @@ const VehicleDetailPage = () => {
       <Container>
         <div className={css["details-container"]}>
           <div className={css["card-form-contaner"]}>
-            <BackLink to='/catalog'/>
+            <BackLink to={backLink} />
             <VehicleImage
               img={vehicle.img}
               brand={vehicle.brand}
