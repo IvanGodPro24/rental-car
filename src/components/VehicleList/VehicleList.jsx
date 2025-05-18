@@ -1,13 +1,7 @@
-import { useSelector } from "react-redux";
-import {
-  selectAllVehicles,
-} from "../../redux/vehicles/selectors";
 import VehicleCard from "../VehicleCard/VehicleCard";
-import css from './VehicleList.module.css'
+import css from "./VehicleList.module.css";
 
-const VehicleList = () => {
-  const vehicles = useSelector(selectAllVehicles);
-
+const VehicleList = ({ vehicles }) => {
   return (
     <ul className={css.list}>
       {vehicles.map(

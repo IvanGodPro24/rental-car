@@ -9,6 +9,7 @@ import VehicleRentalForm from "../../components/VehicleRentalForm/VehicleRentalF
 import Loader from "../../components/Loader/Loader";
 import css from "./VehicleDetailPage.module.css";
 import Container from "../../components/Container/Container";
+import BackLink from "../../components/BackLink/BackLink";
 
 const VehicleDetailPage = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ const VehicleDetailPage = () => {
       <Container>
         <div className={css["details-container"]}>
           <div className={css["card-form-contaner"]}>
+            <BackLink to='/catalog'/>
             <VehicleImage
               img={vehicle.img}
               brand={vehicle.brand}

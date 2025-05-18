@@ -1,4 +1,3 @@
-import css from "./VehicleFeatureCard.module.css";
 import icons from "../../assets/icons.svg";
 
 const VehicleFeatureCard = ({ prop }) => {

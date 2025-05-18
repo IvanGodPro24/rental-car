@@ -5,11 +5,11 @@ axios.defaults.baseURL = "https://car-rental-api.goit.global";
 
 export const getAllVehicles = createAsyncThunk(
   "vehicles/getAll",
-  async (_, { rejectWithValue }) => {
+  async ({ page = 1, limit = 12 }, { rejectWithValue }) => {
     try {
-      const response = await axios.get("/cars");
+      const response = await axios.get(`/cars?page=${page}&limit=${limit}`);
 
-      return response.data.cars;
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }

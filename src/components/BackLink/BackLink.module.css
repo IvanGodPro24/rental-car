@@ -1,0 +1,24 @@
+.back-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 50px;
+  min-height: 35px;
+  background: #3470ff;
+  border-radius: 24px;
+
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-link:hover,
+.back-link:focus {
+  background: #0b44cd;
+}
+
+.back-icon {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  transform: rotate(90deg);
+}

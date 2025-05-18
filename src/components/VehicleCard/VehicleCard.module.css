@@ -28,6 +28,10 @@
   font-weight: 500;
   line-height: 1.25;
   color: #101828;
+
+  max-height: 20px;
+
+  overflow: scroll;
 }
 
 .extra-text {

@@ -1,5 +1,4 @@
 import VehicleSpecificationCard from "../VehicleSpecificationCard/VehicleSpecificationCard";
-import css from "./VehicleSpecificationList.module.css";
 import icons from "../../assets/icons.svg";
 
 const VehicleSpecificationList = ({

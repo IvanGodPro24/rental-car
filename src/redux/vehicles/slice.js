@@ -17,6 +17,9 @@ const vehicleSlice = createSlice({
     items: [],
     favourites: [],
     selectedVehicle: null,
+    totalPages: null,
+    currentPage: 1,
+    loadedPages: [],
     loading: false,
     error: null,
   },
@@ -31,6 +34,16 @@ const vehicleSlice = createSlice({
     removeFavourite(state, action) {
       state.favourites = state.favourites.filter((id) => id !== action.payload);
     },
+
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload;
+    },
+
+    resetVehicles(state) {
+      state.items = [];
+      state.currentPage = 1;
+      state.loadedPages = [];
+    },
   },
 
   extraReducers: (builder) => {
@@ -38,7 +51,18 @@ const vehicleSlice = createSlice({
       .addCase(getAllVehicles.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload;
+
+        const page = action.meta.arg.page || 1;
+
+        if (!state.loadedPages.includes(page)) {
+          state.loadedPages.push(page);
+
+          page === 1
+            ? (state.items = action.payload.cars)
+            : (state.items = [...state.items, ...action.payload.cars]);
+        }
+
+        state.totalPages = action.payload.totalPages;
       })
 
       .addCase(getVehicleById.fulfilled, (state, action) => {
@@ -52,6 +76,7 @@ const vehicleSlice = createSlice({
   },
 });
 
-export const { addFavourite, removeFavourite } = vehicleSlice.actions;
+export const { addFavourite, removeFavourite, setCurrentPage, resetVehicles } =
+  vehicleSlice.actions;
 
 export default vehicleSlice.reducer;
