@@ -1,12 +1,71 @@
-# React + Vite
+# Rental Car Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Rental Car** is a web application designed for browsing and selecting rental cars. Built with React and Vite, it offers a fast and responsive user experience.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Experience the application here: [rental-car-beige.vercel.app](https://rental-car-beige.vercel.app)
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** — JavaScript library for building user interfaces
+- **Vite** — Next-generation frontend tooling
+- **ESLint** — Linting utility for maintaining code quality
+- **Vercel** — Deployment platform for frontend applications
+
+## 📦 Installation & Setup
+
+Ensure you have Node.js (v16 or higher) installed.
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/IvanGodPro24/rental-car.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd rental-car
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open in your browser: [http://localhost:5173](http://localhost:5173)
+
+## 📁 Project Structure
+
+```
+rental-car/
+├── public/                 # Static assets
+├── src/                    # Source code
+│   ├── components/         # Reusable components
+│   ├── pages/              # Application pages
+│   └── main.jsx            # Entry point
+├── .gitignore
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## 📈 Features
+
+- Browse available rental cars
+- Responsive design for various devices
+- Fast loading with Vite
+- Deployed on Vercel for easy access
+
+## 🤝 Contributing
+
+Contributions are welcome! Please open issues or submit pull requests for improvements and bug fixes.
