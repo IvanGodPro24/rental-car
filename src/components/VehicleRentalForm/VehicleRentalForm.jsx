@@ -67,7 +67,7 @@ const VehicleRentalForm = () => {
               placeholder="Name*"
               className={css.input}
             />
-            <ErrorMessage name="name" component="div" className={css.error} />
+            <ErrorMessage name="name" component="div" className="error-block" />
             <Field
               type="email"
               name="email"
@@ -75,7 +75,11 @@ const VehicleRentalForm = () => {
               placeholder="Email*"
               className={css.input}
             />
-            <ErrorMessage name="email" component="div" className={css.error} />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className="error-block"
+            />
 
             <DatePicker
               selected={selectedDate}
@@ -88,7 +92,7 @@ const VehicleRentalForm = () => {
               placeholderText="Booking date"
               className={css.input}
             />
-            <ErrorMessage name="date" component="div" className={css.error} />
+            <ErrorMessage name="date" component="div" className="error-block" />
 
             <Field
               as="textarea"
@@ -100,7 +104,7 @@ const VehicleRentalForm = () => {
             <ErrorMessage
               name="comment"
               component="div"
-              className={css.error}
+              className="error-block"
             />
           </div>
           <Button isBtn={true}>Send</Button>

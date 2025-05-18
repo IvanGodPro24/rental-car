@@ -9,6 +9,7 @@ import { getAllBrands } from "../../redux/vehicles/operations";
 import Loader from "../Loader/Loader";
 import { setFilter } from "../../redux/filters/slice";
 import { resetVehicles, setCurrentPage } from "../../redux/vehicles/slice";
+import CustomSelect from "../CustomSelect/CustomSelect";
 
 const validationSchema = Yup.object().shape({
   brand: Yup.string().optional(),
@@ -27,8 +28,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const VehicleFilters = () => {
-  const brandId = useId();
-  const priceId = useId();
   const minMId = useId();
   const maxMId = useId();
 
@@ -62,88 +61,67 @@ const VehicleFilters = () => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      <Form className={css["filter-container"]}>
-        <div className={css["internal-filter-container"]}>
-          <label htmlFor={brandId} className={css.label}>
-            Car brand
-          </label>
-
-          <Field as="select" name="brand" id={brandId} className="">
-            <option value="">Select a brand</option>
-            {brands.map((brand, index) => (
-              <option key={index} value={brand}>
-                {brand}
-              </option>
-            ))}
-          </Field>
-
-          <ErrorMessage name="brand" component="div" className={css.error} />
-
-          {/* <div className={css["custom-select"]}></div> */}
-        </div>
-
-        <div className={css["internal-filter-container"]}>
-          <label htmlFor={priceId} className={css.label}>
-            Price/ 1 hour
-          </label>
-          <Field
-            as="select"
-            name="rentalPrice"
-            id={priceId}
-            className={css.select}
-          >
-            <option value="">Select a price</option>
-            <option value="30">30</option>
-            <option value="40">40</option>
-            <option value="50">50</option>
-            <option value="60">60</option>
-            <option value="70">70</option>
-            <option value="80">80</option>
-          </Field>
-
-          <ErrorMessage
-            name="rentalPrice"
-            component="div"
-            className={css.error}
-          />
-        </div>
-
-        <div className={css["internal-filter-container"]}>
-          <label htmlFor={minMId} className={css.label}>
-            Сar mileage / km
-          </label>
-          <div className={css["from-to-container"]}>
-            <Field
-              type="number"
-              name="minMileage"
-              id={minMId}
-              placeholder="From"
-              className={css.price}
-            />
-            <ErrorMessage
-              name="minMileage"
-              component="div"
-              className={css.error}
-            />
-            <Field
-              type="number"
-              name="maxMileage"
-              id={maxMId}
-              placeholder="To"
-              className={css.price}
-            />
-            <ErrorMessage
-              name="maxMileage"
-              component="div"
-              className={css.error}
+      {({ setFieldValue }) => (
+        <Form className={css["filter-container"]}>
+          <div className={css["internal-filter-container"]}>
+            <CustomSelect
+              label="Car brand"
+              name="brand"
+              placeholder="Choose a brand"
+              options={brands}
+              setFieldValue={setFieldValue}
             />
           </div>
-        </div>
 
-        <Button isBtn={true} isCenter={false}>
-          Search
-        </Button>
-      </Form>
+          <div className={css["internal-filter-container"]}>
+            <CustomSelect
+              label="Price/ 1 hour"
+              name="rentalPrice"
+              placeholder="Choose a price"
+              options={[30, 40, 50, 60, 70, 80]}
+              setFieldValue={setFieldValue}
+            />
+          </div>
+
+          <div className={css["internal-filter-container"]}>
+            <label htmlFor={minMId} className="label">
+              Сar mileage / km
+            </label>
+            <div className={css["from-to-container"]}>
+              <Field
+                type="number"
+                name="minMileage"
+                id={minMId}
+                placeholder="From"
+                className={css.price}
+              />
+              <Field
+                type="number"
+                name="maxMileage"
+                id={maxMId}
+                placeholder="To"
+                className={css.price}
+              />
+            </div>
+
+            <ErrorMessage
+              name="minMileage"
+              component="div"
+              className="error-block"
+            />
+
+            <ErrorMessage
+              name="maxMileage"
+              component="div"
+              className="error-block"
+            />
+          </div>
+
+          <Button isBtn={true} isCenter={false}>
+            Search
+          </Button>
+        </Form>
+      )}
     </Formik>
   );
 };

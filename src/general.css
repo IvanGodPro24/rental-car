@@ -19,10 +19,28 @@
   height: 16px;
 }
 
+.label {
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8d929a;
+
+  margin-bottom: 8px;
+}
+
 .center {
   text-align: center;
 }
 
 .error {
   margin-top: 10rem;
+}
+
+.error-block {
+  font-size: 14px;
+  color: #e74c3c;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 5px;
 }
