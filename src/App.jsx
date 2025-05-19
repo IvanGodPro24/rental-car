@@ -4,13 +4,13 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Loader from "./components/Loader/Loader";
 import Layout from "./components/Layout/Layout";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const CatalogPage = lazy(() => import("./pages/CatalogPage/CatalogPage"));
 const VehicleDetailPage = lazy(() =>
   import("./pages/VehicleDetailPage/VehicleDetailPage")
 );
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 function App() {
   return (

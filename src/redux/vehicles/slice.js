@@ -27,13 +27,13 @@ const vehicleSlice = createSlice({
 
   reducers: {
     addFavourite(state, action) {
-      if (!state.favourites.includes(action.payload)) {
+      if (!state.favourites.includes(action.payload.id)) {
         state.favourites.push(action.payload);
       }
     },
 
     removeFavourite(state, action) {
-      state.favourites = state.favourites.filter((id) => id !== action.payload);
+      state.favourites = state.favourites.filter((favourite) => favourite.id !== action.payload.id);
     },
 
     setCurrentPage(state, action) {

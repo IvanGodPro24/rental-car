@@ -26,10 +26,21 @@ const VehicleCard = ({
 
   const favourites = useSelector(selectFavourites);
 
-  const isFavourite = favourites.includes(id);
+  const isFavourite = favourites.some((favourite) => favourite.id === id);
 
   const handleToggleFavourite = () =>
-    isFavourite ? dispatch(removeFavourite(id)) : dispatch(addFavourite(id));
+    isFavourite
+      ? dispatch(removeFavourite({ id }))
+      : dispatch(
+          addFavourite({
+            id,
+            img,
+            brand,
+            model,
+            year,
+            rentalPrice,
+          })
+        );
 
   return (
     <>
