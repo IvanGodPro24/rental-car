@@ -37,7 +37,7 @@ const Navigation = () => {
         Catalog
       </NavLink>
 
-      <FavouritesBtn onClick={toggleModal} isModalOpen={isModalOpen} />
+      <FavouritesBtn onClick={toggleModal} />
 
       <FavouriteModal
         onClick={toggleModal}

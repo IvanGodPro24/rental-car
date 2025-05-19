@@ -20,7 +20,7 @@ const Button = ({
   ) : (
     <Link
       to={to}
-      className={!unstyled && clsx(css.btn, isCenter && css.margin)}
+      className={clsx(!unstyled && css.btn, !unstyled && isCenter && css.margin)}
       onClick={onClick}
     >
       {children}
