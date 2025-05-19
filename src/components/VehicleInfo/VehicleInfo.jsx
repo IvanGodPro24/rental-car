@@ -16,9 +16,9 @@ const VehicleInfo = ({
   return (
     <>
       <div className={clsx(css["info-container"], css["margin-sm"])}>
-        <p className={css["main-text"]}>
+        <h2 className={css["main-text"]}>
           {brand} {model}, {year}
-        </p>
+        </h2>
 
         <p className={css["extra-text"]}>Id: {formatId(id)}</p>
       </div>

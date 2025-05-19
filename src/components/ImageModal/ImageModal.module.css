@@ -31,12 +31,38 @@
   max-height: 90vh;
   overflow-y: auto;
   border-radius: 8px;
-  width: 1024px;
+  min-width: 300px;
   transition: transform 0.4s ease, opacity 0.4s ease;
   opacity: 1;
   outline: none;
 }
 
-.img {
-  width: 1024px;
+@media (max-width: 1280px) {
+  .img {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 900px) {
+  .img {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .img {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 700px) {
+  .img {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1281px) {
+  .img {
+    max-width: 1024px;
+  }
 }

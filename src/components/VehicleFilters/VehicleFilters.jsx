@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
     .optional(),
 });
 
-const VehicleFilters = () => {
+const VehicleFilters = ({ ref }) => {
   const minMId = useId();
   const maxMId = useId();
 
@@ -44,13 +44,16 @@ const VehicleFilters = () => {
   const isLoading = useSelector(selectLoading);
 
   useEffect(() => {
-    dispatch(getAllBrands());
-  }, [dispatch]);
+    if (brands.length === 0) {
+      dispatch(getAllBrands());
+    }
+  }, [brands, dispatch]);
 
   const onSubmit = (values) => {
     dispatch(resetVehicles());
     dispatch(setCurrentPage(1));
     dispatch(setFilter(values));
+    ref.current = false;
   };
 
   if (isLoading) return <Loader />;
