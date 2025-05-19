@@ -10,6 +10,7 @@ Experience the application here: [rental-car-beige.vercel.app](https://rental-ca
 
 - **React** — JavaScript library for building user interfaces
 - **Vite** — Next-generation frontend tooling
+- **Redux** — State management library
 - **ESLint** — Linting utility for maintaining code quality
 - **Vercel** — Deployment platform for frontend applications
 
@@ -51,6 +52,7 @@ rental-car/
 ├── src/                    # Source code
 │   ├── components/         # Reusable components
 │   ├── pages/              # Application pages
+│   ├── redux/              # Redux store and slices
 │   └── main.jsx            # Entry point
 ├── .gitignore
 ├── index.html
@@ -63,6 +65,7 @@ rental-car/
 
 - Browse available rental cars
 - Responsive design for various devices
+- State management with Redux
 - Fast loading with Vite
 - Deployed on Vercel for easy access
 
