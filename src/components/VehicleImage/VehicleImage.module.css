@@ -1,4 +1,6 @@
 .img {
   max-width: 640px;
   border-radius: 19px;
+
+  cursor: pointer;
 }
