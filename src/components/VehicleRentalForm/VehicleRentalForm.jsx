@@ -5,8 +5,21 @@ import { toast } from "sonner";
 import * as Yup from "yup";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { useId, useState } from "react";
+import icons from "../../assets/icons.svg";
+import { getYear, getMonth } from "date-fns";
+import { registerLocale } from "react-datepicker";
+import enUS from "date-fns/locale/en-US";
+import { months, shortDays } from "../../utils/utils";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+
+registerLocale("custom-en", {
+  ...enUS,
+  localize: {
+    ...enUS.localize,
+    day: (n) => shortDays[n],
+  },
+});
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -83,6 +96,8 @@ const VehicleRentalForm = () => {
 
             <DatePicker
               selected={selectedDate}
+              minDate={new Date()}
+              locale="custom-en"
               onChange={(date) => {
                 setSelectedDate(date);
                 setFieldValue("date", date);
@@ -90,6 +105,46 @@ const VehicleRentalForm = () => {
               id={dateId}
               dateFormat="dd.MM.yyyy"
               placeholderText="Booking date"
+              renderCustomHeader={({
+                date,
+                decreaseMonth,
+                increaseMonth,
+                prevMonthButtonDisabled,
+                nextMonthButtonDisabled,
+              }) => (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={decreaseMonth}
+                    disabled={prevMonthButtonDisabled}
+                  >
+                    <svg className={clsx(css.arrow, css.prev)}>
+                      <use href={`${icons}#icon-arrow`}></use>
+                    </svg>
+                  </button>
+
+                  <span className={css.span}>
+                    {months[getMonth(date)]} {getYear(date)}
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={increaseMonth}
+                    disabled={nextMonthButtonDisabled}
+                  >
+                    <svg className={clsx(css.arrow, css.next)}>
+                      <use href={`${icons}#icon-arrow`}></use>
+                    </svg>
+                  </button>
+                </div>
+              )}
+              calendarClassName={css.calendar}
               className={css.input}
             />
             <ErrorMessage name="date" component="div" className="error-block" />
