@@ -104,7 +104,7 @@ const VehicleRentalForm = () => {
               }}
               id={dateId}
               dateFormat="dd.MM.yyyy"
-              placeholderText="Booking date"
+              placeholderText="Booking date*"
               renderCustomHeader={({
                 date,
                 decreaseMonth,
