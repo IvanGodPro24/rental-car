@@ -59,13 +59,17 @@ const VehicleCard = ({
           />
         )}
 
-        <svg className={css.heart} onClick={handleToggleFavourite}>
-          <use
-            href={
-              isFavourite ? `${icons}#icon-heart-active` : `${icons}#icon-heart`
-            }
-          ></use>
-        </svg>
+        <button>
+          <svg className={css.heart} onClick={handleToggleFavourite}>
+            <use
+              href={
+                isFavourite
+                  ? `${icons}#icon-heart-active`
+                  : `${icons}#icon-heart`
+              }
+            ></use>
+          </svg>
+        </button>
 
         <div className={css["general-container"]}>
           <div className={css["main-container"]}>
