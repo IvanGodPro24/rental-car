@@ -9,18 +9,30 @@ const Button = ({
   isCenter = true,
   onClick,
   unstyled = false,
+  disabled,
+  type = "submit",
 }) => {
   return isBtn ? (
     <button
-      type="submit"
-      className={clsx(css.btn, css["send-btn"], isCenter && css.margin)}
+      type={type}
+      className={clsx(
+        css.btn,
+        css["send-btn"],
+        isCenter && css.margin,
+        disabled && css.disabled
+      )}
+      onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
   ) : (
     <Link
       to={to}
-      className={clsx(!unstyled && css.btn, !unstyled && isCenter && css.margin)}
+      className={clsx(
+        !unstyled && css.btn,
+        !unstyled && isCenter && css.margin
+      )}
       onClick={onClick}
     >
       {children}

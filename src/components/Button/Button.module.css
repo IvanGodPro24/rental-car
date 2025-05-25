@@ -23,6 +23,16 @@
   margin: 0 auto;
 }
 
+.disabled {
+  cursor: default;
+  background: #8d929a;
+}
+
+.btn.disabled:hover,
+.btn.disabled:focus {
+  background: #8d929a;
+}
+
 .send-btn {
   max-width: 156px;
   padding: 12px 58px;

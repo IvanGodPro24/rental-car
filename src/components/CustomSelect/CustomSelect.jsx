@@ -4,7 +4,7 @@ import css from "./CustomSelect.module.css";
 import icons from "../../assets/icons.svg";
 import clsx from "clsx";
 
-const CustomSelect = ({ options, label, name, placeholder, setFieldValue }) => {
+const CustomSelect = ({ options, label, name, placeholder, setFieldValue, value }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
@@ -22,7 +22,7 @@ const CustomSelect = ({ options, label, name, placeholder, setFieldValue }) => {
         onClick={() => setIsOpen((prev) => !prev)}
         className={css["custom-select"]}
       >
-        {selectedOption || placeholder}
+        {value || placeholder}
         <svg className={clsx("icon", css.arrow, { [css.rotate]: isOpen })}>
           <use href={`${icons}#icon-arrow`}></use>
         </svg>
