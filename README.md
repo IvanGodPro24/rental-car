@@ -61,6 +61,17 @@ rental-car/
 └── README.md
 ```
 
+## 🧠 State Management (Redux)
+
+This application uses Redux for global state management.
+
+- **Store Configuration:** `src/redux/store.js`
+- **Slices:**
+  - `vehicleSlice` — manages the list and filtering of vehicles
+  - `filterSlice` — handles filtering state
+
+Actions and selectors are organized to promote modular and scalable development.
+
 ## 📈 Features
 
 - Browse available rental cars
