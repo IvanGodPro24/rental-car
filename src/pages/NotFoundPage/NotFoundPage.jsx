@@ -7,6 +7,8 @@ const NotFoundPage = () => {
   const location = useLocation();
   return (
     <Container>
+      <title>Not Found</title>
+      
       <p className={clsx(css.text, css.number)}>404</p>
       <p className={clsx(css.text, css["not-found"])}>
         This is not the web page you are looking for

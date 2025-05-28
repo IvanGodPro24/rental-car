@@ -69,6 +69,8 @@ const CatalogPage = () => {
   return (
     <section>
       <Container>
+        <title>Catalog</title>
+        
         <VehicleFilters ref={toastShownRef} filters={filters} />
         {isLoading && <Loader />}
         {error && <p className="error center">{error}</p>}

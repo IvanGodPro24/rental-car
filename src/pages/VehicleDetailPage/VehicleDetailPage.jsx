@@ -39,6 +39,8 @@ const VehicleDetailPage = () => {
   return (
     <section className={css["details-section"]}>
       <Container>
+        <title>{vehicle.brand}</title>
+
         <div className={css["details-container"]}>
           <div className={css["card-form-contaner"]}>
             <BackLink to={backLink} />
