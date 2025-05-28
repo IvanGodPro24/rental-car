@@ -15,3 +15,9 @@
 .active {
   color: #0b44cd;
 }
+
+@media (max-width: 768px) {
+  .nav {
+    gap: 15px;
+  }
+}
