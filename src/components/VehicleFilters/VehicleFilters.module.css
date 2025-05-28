@@ -40,6 +40,13 @@
   color: #101828;
 }
 
+.absolute {
+  position: absolute;
+  top: 100px;
+  max-height: 45px;
+  overflow: scroll;
+}
+
 @media (max-width: 375px) {
   .price {
     max-width: 140px;

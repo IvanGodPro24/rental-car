@@ -3,6 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import Button from "../Button/Button";
 import css from "./VehicleFilters.module.css";
 import * as Yup from "yup";
+import clsx from "clsx";
 import { selectBrands, selectLoading } from "../../redux/vehicles/selectors";
 import { useEffect, useId, useState } from "react";
 import { getAllBrands } from "../../redux/vehicles/operations";
@@ -24,7 +25,12 @@ const validationSchema = Yup.object().shape({
   maxMileage: Yup.number()
     .positive("Mileage must be a positive number")
     .integer("Mileage must be an integer")
-    .optional(),
+    .optional()
+    .when("minMileage", (minMileage, schema) => {
+      return minMileage
+        ? schema.min(minMileage, "Max mileage must be greater than min mileage")
+        : schema;
+    }),
 });
 
 const VehicleFilters = ({ ref, filters }) => {
@@ -176,13 +182,13 @@ const VehicleFilters = ({ ref, filters }) => {
               <ErrorMessage
                 name="minMileage"
                 component="div"
-                className="error-block"
+                className={clsx("error-block", css.absolute)}
               />
 
               <ErrorMessage
                 name="maxMileage"
                 component="div"
-                className="error-block"
+                className={clsx("error-block", css.absolute)}
               />
             </div>
 
