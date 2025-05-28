@@ -1,6 +1,9 @@
 .section {
-  padding-top: 236px;
-  padding-bottom: 147px;
+  height: clamp(500px, 100vh, 800px);
+  padding-bottom: 60px;
+
+  display: flex;
+  align-items: flex-end;
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../../assets/home.jpg");
@@ -27,17 +30,4 @@
   color: #fff;
 
   margin-bottom: 40px;
-}
-
-@media (min-width: 768px) {
-  .section {
-    padding-top: 371px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .section {
-    padding-top: 600px;
-    padding-bottom: 77px;
-  }
 }
