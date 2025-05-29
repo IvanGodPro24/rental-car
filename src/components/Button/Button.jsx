@@ -31,7 +31,8 @@ const Button = ({
       to={to}
       className={clsx(
         !unstyled && css.btn,
-        !unstyled && isCenter && css.margin
+        !unstyled && isCenter && css.margin,
+        to === "/catalog" && css.max
       )}
       onClick={onClick}
     >

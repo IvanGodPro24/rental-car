@@ -9,12 +9,20 @@
   margin-bottom: 80px;
 }
 
-.item {
-  max-width: 280px;
+@media (min-width: 768px) {
+  .item {
+    flex-basis: calc((100% - 32px) / 2);
+  }
 }
 
 @media (min-width: 1280px) {
-  .list {
+  .item {
     flex-basis: calc((100% - 64px) / 3);
+  }
+}
+
+@media (min-width: 1440px) {
+  .item {
+    flex-basis: calc((100% - 96px) / 4);
   }
 }
